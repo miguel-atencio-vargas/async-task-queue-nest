@@ -120,10 +120,11 @@ export class NotificationsService {
    await this.notificationQueue.add(NOTIFICATIONS_JOB_NAME, message);
  }
 }
+```
 
-ta; } }
-Step 5: Create a Worker Service
+5. Create a Worker Service
 Create a processor job from the queue.
+```ts
 import { NotImplementedException } from '@nestjs/common';
 import { Processor, WorkerHost } from '@nestjs/bullmq';
 import { Job } from 'bullmq';
