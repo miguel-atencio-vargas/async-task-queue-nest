@@ -1,0 +1,36 @@
+version: '3.6'
+
+networks:
+  my-net:
+    driver: 'bridge'
+    name: 'my-net'
+
+services:
+  redis:
+    image: redis:7.0.11-alpine
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --loglevel warning
+    networks:
+      my-net:
+
+  main:
+    container_name: main
+    env_file:
+      - .env.${NODE_ENV}
+    build:
+      context: .
+      target: ${NODE_ENV}
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    networks:
+      my-net:
+    depends_on:
+      - redis
+    command: npm run start:dev
+
+volumes:
+  redis-data:
