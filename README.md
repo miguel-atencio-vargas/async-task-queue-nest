@@ -24,8 +24,8 @@ Before you begin, ensure you have the following installed:
 1. Clone this repository to your local machine:
 
    ```shell
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/skyfall947/async-task-queue-nest
+   cd ./async-task-queue-nest
    ```
 2. Copy and set up your env variables on env file can be env.dev or env.prod
    
